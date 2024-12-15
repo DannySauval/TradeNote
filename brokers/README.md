@@ -109,7 +109,7 @@ Note : make sure to input one execution per line, not aggregated trade. So one l
       5. Include Audit Trail Fields?: No
       6. Display Account Alias in Place of Account ID?: No
    5. Select Continue
-3. On the Review Your Trade Confirmation Flex Query page, click Save Changes
+3. On the Review Your Trade Confirmation Flex Query page, click Create
 4. On the Trade Confirm Flex Query Saved page, click Ok
 5. Notice your new Flex Query is now available under the Trade Confirmation Flex Query panel
 
@@ -130,7 +130,7 @@ Before attempting to import data, there are a few things that may help.
 - If multiple accounts are present, isolate them to 1 account at a time
 - If trading options, futures, etc., ensure the Underlying Symbol exists
 - May need to set the Underlying Symbol as the ticker from the Symbol column
-- Sort the trades by Order Time
+- Sort the trades by Order Time. You can use the `TradeNoteIBKRFormatter.py` from the `Scripts` folder to do so: python3 ./TradeNoteIBKRFormatter.py TradeNoteExport_365_15.12.2024.csv TradeNoteExport_365_15.12.2024_processed.csv
 
 - Remove any Open Trades
 - Add an Order Time to Expired Contracts rather than leaving the fields empty
