@@ -1,10 +1,23 @@
-# Using 18 alpine because supports arm/v8 and arm/v8 needed for silicon chips
+# Use node:18-alpine to support ARM/v8 (Apple Silicon)
 FROM node:18-alpine
-RUN apk add --no-cache bash
-RUN apk update && apk add python3
-RUN apk add --no-cache build-base
+
+# Install necessary dependencies
+RUN apk add --no-cache bash python3 build-base
+
+# Set the working directory
 WORKDIR /app
-ADD ./ .
+
+# Copy package.json and package-lock.json for caching npm install
+COPY package*.json ./
+
+# Install dependencies (this step is cached unless package.json changes)
 RUN npm install
+
+# Copy the rest of the application code
+COPY ./ .
+
+# Build the application
 RUN npm run build
+
+# Start the application
 CMD ["npm", "start"]
